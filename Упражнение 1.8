@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+  /* подсчет строк, пробелов и табуляций входного потока */
+  int main()
+  {
+      int c, nl, ns, nt;
+      nl = 0;
+      ns = 0;
+      nt = 0;
+      while ((c = getchar()) != EOF)
+          if (c == '\n')
+              ++nl;
+          else if (c == ' ')
+              ++ns;
+          else if (c == '\t')
+              ++nt;
+      printf("lines=%d, spaces=%d, tabs=%d\n", nl, ns, nt);
+      return 0;
+  }

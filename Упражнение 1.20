@@ -13,7 +13,7 @@ int main()
 		counter++;
 		if (c == '\t')
 		{
-			for (int i = ((counter % N)-1); i < N; i++)
+			for (int i = ((counter % N)-1); i < N; i++) // ((counter % N)-1)  минус один  и начинаем с единицы считать, чтобы работало корректно, когда каунтер больше N
 				printf(" ");
 			counter = 1;
 		}

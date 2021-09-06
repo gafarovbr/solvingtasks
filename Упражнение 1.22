@@ -1,0 +1,55 @@
+int getline(char s[], int lim);
+
+#include <iostream>
+#define N 12
+
+//#define MAXLINE 8
+
+int probel; // индекс последнего пробела в допустимой строке
+int flag = 0; // флаг отвечает за то, чтобы, если не будет пробелов, строка была перенесена на новую строку при достижении N
+
+
+int main()
+{
+	int len;
+	char line[N+1];
+	int counter = 0;
+	extern int probel;
+	while ((len = getline(line, (N+1)))>0) // получает строку на вход
+	{
+		for (int i = 0; i <= len; i++) 
+		{
+			if (((i-1) == probel)&&(i!= 1)) // i-1 чтобы пробел оставался в нашей строке
+			{
+				flag = 1;
+				printf("\n");
+				//probel = 0;
+			}
+			printf("%c",line[i]);
+			if ((i == len) && (flag == 0)) printf("\n");
+		}
+	}
+	return 0;
+}
+
+int getline(char s[], int lim)
+{
+	extern int probel;
+	extern int flag;
+	int c, i;
+	for (i = 0; i < lim - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
+	{
+		if ((c == ' ') || (c == '\t')) probel = i;
+		s[i] = c;
+	}
+	if (c == '\n') {
+		s[i] = c;
+		++i;
+		probel = i;
+	}
+	s[i] = '\0';
+	//printf("\n");
+	flag = 0;
+	return i;
+
+}
